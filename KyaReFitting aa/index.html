@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>KyaReFitting aa</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="./multi-form.css?v2">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+<script type="text/javascript" src="./multi-form.js?v2"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$.validator.addMethod('date', function(value, element, param) {
+return (value != 0) && (value <= 31) && (value == parseInt(value, 10));
+}, 'Please enter a valid date!');
+$.validator.addMethod('month', function(value, element, param) {
+return (value != 0) && (value <= 12) && (value == parseInt(value, 10));
+}, 'Please enter a valid month!');
+$.validator.addMethod('year', function(value, element, param) {
+return (value != 0) && (value >= 1900) && (value == parseInt(value, 10));
+}, 'Please enter a valid year not less than 1900!');
+$.validator.addMethod('username', function(value, element, param) {
+var nameRegex = /^[a-zA-Z0-9]+$/;
+return value.match(nameRegex);
+}, 'Only a-z, A-Z, 0-9 characters are allowed');
+
+var val	=	{
+// Specify validation rules
+rules: {
+fname: "required",
+email: {
+required: false,
+email: false
+},
+phone: {
+required:true,
+minlength:10,
+maxlength:10,
+digits:true
+},
+date:{
+date:false,
+required:false,
+minlength:2,
+maxlength:2,
+digits:true
+},
+month:{
+month:true,
+required:true,
+minlength:2,
+maxlength:2,
+digits:true
+},
+year:{
+year:true,
+required:true,
+minlength:4,
+maxlength:4,
+digits:true
+},
+username:{
+username:true,
+required:true,
+minlength:4,
+maxlength:16,
+},
+password:{
+required:true,
+minlength:8,
+maxlength:16,
+}
+},
+// Specify validation error messages
+messages: {
+fname: 		"First name is required",
+email: {
+required: 	"Email is required",
+email: 		"Please enter a valid e-mail",
+},
+phone:{
+required: 	"Phone number is requied",
+minlength: 	"Please enter 10 digit mobile number",
+maxlength: 	"Please enter 10 digit mobile number",
+digits: 	"Only numbers are allowed in this field"
+},
+date:{
+required: 	"Date is required",
+minlength: 	"Date should be a 2 digit number, e.i., 01 or 20",
+maxlength: 	"Date should be a 2 digit number, e.i., 01 or 20",
+digits: 	"Date should be a number"
+},
+month:{
+required: 	"Month is required",
+minlength: 	"Month should be a 2 digit number, e.i., 01 or 12",
+maxlength: 	"Month should be a 2 digit number, e.i., 01 or 12",
+digits: 	"Only numbers are allowed in this field"
+},
+year:{
+required: 	"Year is required",
+minlength: 	"Year should be a 4 digit number, e.i., 2018 or 1990",
+maxlength: 	"Year should be a 4 digit number, e.i., 2018 or 1990",
+digits: 	"Only numbers are allowed in this field"
+},
+username:{
+required: 	"Username is required",
+minlength: 	"Username should be minimum 4 characters",
+maxlength: 	"Username should be maximum 16 characters",
+},
+password:{
+required: 	"Password is required",
+minlength: 	"Password should be minimum 8 characters",
+maxlength: 	"Password should be maximum 16 characters",
+}
+}
+}
+$("#myForm").multiStepForm(
+{
+// defaultStep:0,
+beforeSubmit : function(form, submit){
+console.log("called before submiting the form");
+console.log(form);
+console.log(submit);
+},
+validations:val,
+}
+).navigateTo(0);
+});
+</script>
+</head>
+<body>
+
+<form id="myForm" action="#" method="POST"> 
+<div class="sectionone">
+<h1>KyaReFitting aa</h1><hr>
+<p>The name and photo associated with your Google Account will be recorded when you upload files and submit this form. Only the email address you enter is part of your response.<br><span>* Required</span></p>
+</div>
+
+<!-- One "tab" for each step in the form: -->
+<div class="tab">
+<div class="tab-width">Email <span class="req">*</span> 
+<p><input placeholder="Your email address" name="email"></p>
+</div>
+<div class="tab-width ">Name <span class="req">*</span>
+<p><select name="" style="width: 100%;  padding: 15px;">
+<option value="volvo">Volvo</option>
+<option value="saab">Saab</option>
+<option value="fiat">Fiat</option>
+<option value="audi">Audi</option>
+</select></p>
+</div>
+<div class="tab-width">Date <span class="req">*</span> 
+<p><input placeholder="" name="date" type="date"></p>
+</div>
+
+</div>
+
+<div class="tab"><p class="sectiontwo">Food</p>
+<div class="tab-width">Fibre Rich<br>
+<span class="points">10 points </span> 
+<p><input placeholder="Your email address" name="email" type="file"></p>
+</div>
+<div class="tab-width">Protein rich<br>
+<span class="points">10 points </span> 
+<p><input placeholder="Your email address" name="email" type="file"></p>
+</div>
+<div class="tab-width">Water Content Food<br>
+<span class="points">10 points </span> 
+<p><input placeholder="Your email address" name="email" type="file"></p>
+</div>
+<div class="tab-width">Seasonal Fruits<br>
+<span class="points">10 points </span> 
+<p><input placeholder="Your email address" name="email" type="file"></p>
+</div>
+
+</div>
+
+<div class="tab"><p class="sectiontwo">Water</p>
+<div class="tab-width">Drinking water for their weight<br>
+
+<p><label class="container">1.5 to 2 litres
+<input type="radio" name="radio">
+<span class="checkmark"></span>
+</label><br></p><p>
+<label class="container">2.1 to 5 litres
+<input type="radio" name="radio">
+<span class="checkmark"></span>
+</label></p>
+</div>
+
+</div>
+
+
+</div>
+
+<div class="tab">
+<p class="sectiontwo">Activity</p>
+<div class="tab-width">Sunlight Morning / Evening<br>
+<p><input placeholder="Your email address" name="email" type="file"></p>
+</div>
+<div class="tab-width">Activity Name<br>
+<p><input placeholder="Your email address" name="email"></p>
+</div>
+<div class="tab-width">Activity Points<br>
+<span class="points">1 cal = 0.3 points. Steps to check your calories, Enter Activity manually on google fit. Check Calories and enter. Furnish Photo
+</span>
+<p><input placeholder="Your email address" name="email"></p>
+</div>
+<div class="tab-width">Photo of Activity<br>
+<span class="points">10 points </span> 
+<p><input placeholder="Your email address" name="email" type="file"></p>
+</div>
+<div class="tab-width">Off Screen Time (Over and above fitness activity time)<br>
+<p><label class="container">0.5hours -- 25 points
+<input type="radio" name="radio">
+<span class="checkmark"></span>
+</label></p>
+<p><label class="container">1hour -- 50 points
+<input type="radio" name="radio">
+<span class="checkmark"></span>
+</label></p>
+<p><label class="container">1.5 hours - max -- 70 points
+<input type="radio" name="radio">
+<span class="checkmark"></span>
+</label></p>
+</div>
+<div class="tab-width">Mental Wellbeing<br>
+<p><label class="container">5min Meditation -- 30 points
+<input type="radio" name="radio">
+<span class="checkmark"></span>
+</label></p>
+<p><label class="container">15min Meditation -- 90 points
+<input type="radio" name="radio">
+<span class="checkmark"></span>
+</label></p>
+<p><label class="container">30mins Meditation -- 120 points
+<input type="radio" name="radio">
+<span class="checkmark"></span>
+</label></p>
+</div>
+</div>
+<div class="tab">
+<p class="sectiontwo">Steps</p>
+<div class="tab-width">Steps <span class="req">*</span> <br>
+<span class="points">1step = 0.01 points</span>
+<p><input placeholder="Your email address" name="email"></p>
+</div>
+<div class="tab-width">Steps - Image<br>
+<p><input placeholder="Your email address" name="email" type="file"></p>
+</div>
+</div>
+
+</div>
+<div style="overflow:auto;">
+<div style="float:right; margin-top: 5px;">
+<button type="button" class="previous">Back</button>
+<button type="button" class="next">Next</button>
+<button type="button" class="submit">Submit</button>
+</div>
+</div>
+<!-- Circles which indicates the steps of the form: -->
+<div style="text-align:center;margin-top:40px;">
+<span class="step">1</span>
+<span class="step">2</span>
+<span class="step">3</span>
+<span class="step">4</span>
+<span class="step">5</span>
+</div>
+</form>
+</body>
+</html>

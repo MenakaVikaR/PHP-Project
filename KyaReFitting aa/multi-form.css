@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {box-sizing: border-box;}
+.tab{display: none; width: 100%; height: 50%;margin: 0px auto; font-size: 16px; font-weight: 400; line-height: 24px; color: #202124;}
+.tab-width{
+margin: 19px auto;
+    background: #fff;
+    padding: 29px 23px;
+    border-radius: 5px;
+    border: 1px solid #eaeaea;
+}
+
+.current{display: block;}
+
+body {background-color:#F2F2F2; font-family: 'Roboto', sans-serif;}
+
+form {/*background-color: #ffffff;*/ margin: 25px auto; /*font-family: Raleway;*/ /*padding: 40px;*/ width: 50%; min-width: 300px; }
+
+h1 {text-align: left; padding: 15px 25px; font-size: 32px; font-weight: 400; line-height: 43px; color: #202124; }
+
+input {padding: 10px; width: 100%; font-size: 17px; /*font-family: Raleway;*/ /*border: 1px solid #aaaaaa;*/ }
+
+button {background-color: #fff; color: #000; border: none; padding: 10px 20px; font-size: 17px; font-family: Raleway; cursor: pointer; }
+
+button:hover {opacity: 0.8; }
+
+/* The container */
+.container {
+  /*display: block;*/
+    position: relative;
+    padding-left: 40px;
+    padding-top: 5px;
+    margin: 14px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    color: #202124;
+    line-height: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #000000;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.previous {background-color: #fff; }
+
+/* Make circles that indicate the steps of the form: */
+.step {height: 30px; width: 30px; cursor: pointer; margin: 0 2px; color: #fff; background-color: #bbbbbb; border: none; border-radius: 50%; display: inline-block; opacity: 0.8; padding: 5px}
+
+.step.active {opacity: 1; background-color: #098591;}
+
+.step.finish {background-color: #4CAF50; }
+
+.error {color: #f00; }
+
+
+.sectionone{
+background-color: #fff;height: 45%;margin: 29px 0px; border-radius: 9px;  border: 1px solid #eaeaea;
+}
+.sectionone p{
+padding: 15px 25px; font-weight: 400; font-size: 14px; line-height: 20px; color: #5f6368;
+}
+.sectionone span{
+color: #E03064;
+}
+.req{
+color: #E03064;
+font-size: 12px;
+}
+.sectiontwo{
+background: #000;
+color: #fff;
+padding: 13px 20px;
+margin-bottom: -19px;
+border-radius: 5px;
+}
+.points{
+font-size: 12px;
+}

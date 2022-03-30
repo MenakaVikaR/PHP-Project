@@ -1,0 +1,105 @@
+<?php
+$url='localhost';
+$username='root';
+$password='';
+$conn=mysqli_connect($url,$username,$password,"kyarefitting_aa_form");
+if(!$conn){
+ die('Could not Connect My Sql:' .mysql_error());
+}
+//include_once 'contact.php';
+$result = mysqli_query($conn,"SELECT * FROM user");
+?>
+<!DOCTYPE html>
+<html>
+ <head>
+ <title> Retrive data</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" type="text/css" href="multi-form.css">
+ <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" 
+href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" 
+src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" 
+src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+    body{
+        margin: 59px 59px;
+    }
+    table{
+        border-color: #000;
+    }
+</style>
+ </head>
+<body>
+<?php
+if (mysqli_num_rows($result) > 0) {
+?>
+<div class="table-responsive">
+  <table id="myTable" class="display table" width="100%">
+  
+  <tr>
+    <td>Name</td>
+    <td>Date</td>
+    <td>Fibrerich Food</td>
+    <td>Proteinrich Food</td>
+    <td>Watercontent Food</td>
+    <td>Seasonal Fruit</td>
+    <td>Water Liters</td>
+    <td>Morning Evening Sunlight</td>
+    <td>Activity Name</td>
+    <td>Activity Points</td>
+    <td>Activity Photos</td>
+    <td>Offscreen Time</td>
+    <td>Metal Wellbeing</td>
+    <td>Steps Count</td>
+    <td>Stepscount Photo</td>
+  </tr>
+<?php
+$i=0;
+while($row = mysqli_fetch_array($result)) {
+?>
+<tr>
+    <td><?php echo $row["name"]; ?></td>
+    <td><?php echo $row["today_date"]; ?></td>
+    <td><?php echo $row["fibrerich_food"]; ?></td>
+    <td><?php echo $row["porteinrich_food"]; ?></td>
+    <td><?php echo $row["watercontent_food"]; ?></td>
+    <td><?php echo $row["seasonal_fruits"]; ?></td>
+    <td><?php echo $row["water_litres"]; ?></td>
+    <td><?php echo $row["morning_evening_sunlight"]; ?></td>
+    <td><?php echo $row["activity_name"]; ?></td>
+    <td><?php echo $row["activity_points"]; ?></td>
+    <td><?php echo $row["activity_photos"]; ?></td>
+    <td><?php echo $row["offscreen_time"]; ?></td>
+    <td><?php echo $row["metal_wellbeing"]; ?></td>
+    <td><?php echo $row["steps_count"]; ?></td>
+    <td><?php echo $row["stepscount_photo"]; ?></td>
+</tr>
+<?php
+$i++;
+}
+?>
+</table>
+</div>
+ <?php
+}
+else{
+    echo "No result found";
+}
+?>
+ </body>
+ <script type="text/javascript">
+    //
+// This only line code describes to bind datatable functionalities like searching, sorting and paging to our table.
+// Here 'myTable' is the ID of our table
+//
+ 
+<script>
+$(document).ready(function(){
+    $('#myTable').dataTable();
+});
+</script>
+ </script>
+</html>
